@@ -1,0 +1,320 @@
+// graphs were numerated according to paper drafts
+digraph g1 {
+        S_A99 -> T_X14 -> S_X;
+        X_SPACE -> T_X14 [label="+"];
+        T_X14 -> A_SECTOR;
+}
+
+digraph g2 {
+        S_AA9A -> T_X16 -> S_X;
+        X_SPACE -> T_X16 [label="+"];
+        T_X16 -> A_SECTOR;
+}
+
+digraph g3 {
+        S_AA99 -> T_X17 -> S_X;
+        X_SPACE -> T_X17 [label="+"];
+        T_X17 -> A_SECTOR;
+}
+
+digraph g4 {
+        S_AA9 -> T_AA9A4 -> S_AA9A ;
+        C_ALPHA -> T_AA9A4 [label="+"];
+        AE_OUTWARD_EC4 -> T_AA9A4 [label="+"];
+        T_AA9A4 -> A_SECTOR;
+        T_AA9A4 -> A_OUTWARD;
+}
+
+digraph g5 {
+        S_AA9 -> T_AA9A5 -> S_AA9A;
+        T_AA9A5 -> A_OUTWARD;
+        C_ALPHA -> T_AA9A5 [label="+"];
+        AE_OUTWARD_SW1 -> T_AA9A5 [label="+"];
+        T_AA9A5 -> A_SECTOR;
+}
+
+digraph g6 {
+        S_AA9 -> T_AA9A6 -> S_AA9A;
+        C_ALPHA -> T_AA9A6 [label="+"];
+        AE_OUTWARD_WC1 -> T_AA9A6 [label="+"];
+        T_AA9A6 -> A_SECTOR;
+        T_AA9A6 -> A_OUTWARD;
+}
+
+digraph g7 {
+        S_AA9 -> T_AA9A7 -> S_AA9A;
+        C_ALPHA -> T_AA9A7 [label="+"];
+        AE_OUTWARD_WC2 -> T_AA9A7 [label="+"];
+        T_AA9A7 -> A_SECTOR;
+        T_AA9A7 -> A_OUTWARD;
+}
+
+digraph g8 {
+        S_AA9 -> T_AA99 -> S_AA99;
+        C_DIGIT -> T_AA99 [label="+"];
+        T_AA99 -> A_OUTWARD;
+        T_AA99 -> A_TOWN;
+        T_AA99 -> A_SECTOR;
+        AE_AREA_BR -> T_AA99 [label="-"];
+        AE_AREA_HA -> T_AA99 [label="-"];
+        AE_AREA_HG -> T_AA99 [label="-"];
+        AE_AREA_HX -> T_AA99 [label="-"];
+        AE_AREA_LD -> T_AA99 [label="-"];
+        AE_AREA_SR -> T_AA99 [label="-"];
+        AE_AREA_WN -> T_AA99 [label="-"];
+        AE_AREA_FY -> T_AA99 [label="-"];
+        AE_AREA_HD -> T_AA99 [label="-"];
+        AE_AREA_HR -> T_AA99 [label="-"];
+        AE_AREA_JE -> T_AA99 [label="-"];
+        AE_AREA_SM -> T_AA99 [label="-"];
+        AE_AREA_WC -> T_AA99 [label="-"];
+        AE_AREA_ZE -> T_AA99 [label="-"];
+}
+
+digraph g9 {
+        S_X9 -> T_X9A -> S_X9A;
+        C_ALPHA -> T_X9A [label="+"];
+        R_CIKMOV -> T_X9A [label="-"];
+        T_X9A -> A_UNIT;
+        T_X9A -> A_INWARD;
+}
+
+digraph g10 {
+        S_X9A -> T_X9AA -> S_X9AA;
+        C_ALPHA -> T_X9AA [label="+"];
+        R_CIKMOV -> T_X9AA [label="-"];
+}
+
+digraph g11 {
+        S_X -> T_X91 -> S_X9;
+        R_123456789 -> T_X91 [label="+"];
+        T_X91 -> A_SECTOR;
+        T_X91 -> A_INWARD;
+
+        S_X -> T_X92 -> S_X9;
+        X_0 -> T_X92 [label="+"];
+        AE_TOWN_9 -> T_X92 [label="+"];
+        T_X92 -> A_SECTOR;
+        T_X92 -> A_INWARD;
+}
+
+digraph g12 {
+        S_A -> T_A9 -> S_A9;
+        X_0 -> T_A9 [label="-"];
+        C_DIGIT -> T_A9 [label="+"];
+        T_A9 -> A_SECTOR;
+        T_A9 -> A_OUTWARD;
+        T_A9 -> A_TOWN;
+}
+
+digraph g13 {
+        S_AA -> T_AA9 -> S_AA9;
+        C_DIGIT -> T_AA9 [label="+"];
+        T_AA9 -> A_SECTOR;
+        T_AA9 -> A_OUTWARD;
+        T_AA9 -> A_TOWN;
+}
+
+digraph g14 {
+        S_INIT -> T_A -> S_A;
+        C_ALPHA -> T_A [label="+"];
+        R_QVX -> T_A [label="-"];
+        T_A -> A_SECTOR;
+        T_A -> A_AREA;
+        T_A -> A_OUTWARD;
+}
+
+digraph g15 {
+        S_A -> T_AA -> S_AA;
+        C_ALPHA -> T_AA [label="+"];
+        R_IJZ -> T_AA [label="-"];
+        T_AA -> A_AREA;
+        T_AA -> A_OUTWARD;
+        T_AA -> A_SECTOR;
+}
+
+digraph g16 {
+        S_A9 -> T_A99 -> S_A99;
+        C_DIGIT -> T_A99 [label="+"];
+        ARI_AREA_0_BEGLMNSW -> T_A99 [label="+"];
+        T_A99 -> A_OUTWARD;
+        T_A99 -> A_TOWN;
+        T_A99 -> A_SECTOR;
+}
+
+digraph g17 {
+        S_A9 -> T_A9A1 -> S_A9A;
+        AE_OUTWARD_E1 -> T_A9A1 [label="+"];
+        X_W -> T_A9A1 [label="+"];
+        T_A9A1 -> A_OUTWARD;
+        T_A9A1 -> A_SECTOR;
+
+        S_A9 -> T_A9A2 -> S_A9A;
+        AE_OUTWARD_N1 -> T_A9A2 [label="+"];
+        R_CP -> T_A9A2 [label="+"];
+        T_A9A2 -> A_OUTWARD;
+        T_A9A2 -> A_SECTOR;
+
+        S_A9 -> T_A9A3 -> S_A9A;
+        AE_OUTWARD_W1 -> T_A9A3 [label="+"];
+        R_ABCDEFGHIJKPSTUW -> T_A9A3 [label="+"];
+        T_A9A3 -> A_OUTWARD;
+        T_A9A3 -> A_SECTOR;
+}
+
+digraph g18 {
+        S_AA9 -> T_AA9A8 -> S_AA9A;
+        AE_OUTWARD_NW1 -> T_AA9A8 [label="+"];
+        X_W -> T_AA9A8 [label="+"];
+        T_AA9A8 -> A_SECTOR;
+        T_AA9A8 -> A_OUTWARD;
+}
+
+digraph g19 {
+        S_AA9 -> T_AA9A10 -> S_AA9A;
+        AE_OUTWARD_SE1 -> T_AA9A10 [label="+"];
+        X_P -> T_AA9A10 [label="+"];
+        T_AA9A10 -> A_SECTOR;
+        T_AA9A10 -> A_OUTWARD;
+}
+
+digraph g20 {
+        S_A9 -> T_X1 -> S_X;
+        X_SPACE -> T_X1 [label="+"];
+        ARI_AREA_0_BEGLMNSW -> T_X1 [label="+"];
+        T_X1 -> A_SECTOR;
+}
+
+digraph g21 {
+        S_AA9 -> T_X2 -> S_X;
+        X_SPACE -> T_X2 [label="+"];
+        ARI_TOWN_0_123456789 -> T_X2 [label="+"];
+        AE_AREA_AB -> T_X2 [label="-"];
+        AE_AREA_LL -> T_X2 [label="-"];
+        AE_AREA_SO -> T_X2 [label="-"];
+        T_X2 -> A_SECTOR;
+}
+
+digraph g22 {
+        S_AA9 -> T_X3 -> S_X;
+        X_SPACE -> T_X3 [label="+"];
+        AE_TOWN_0 -> T_X3 [label="+"];
+        AE_AREA_BL -> T_X3 [label="+"];
+        T_X3 -> A_SECTOR;
+}
+
+digraph g23 {
+        S_AA9 -> T_X4 -> S_X;
+        X_SPACE -> T_X4 [label="+"];
+        AE_TOWN_0 -> T_X4 [label="+"];
+        AE_AREA_BS -> T_X4 [label="+"];
+        T_X4 ->A_SECTOR;
+}
+
+digraph g24 {
+        S_AA9 -> T_X5 -> S_X;
+        X_SPACE -> T_X5 [label="+"];
+        AE_TOWN_0 -> T_X5 [label="+"];
+        AE_AREA_CM -> T_X5 [label="+"];
+        T_X5 -> A_SECTOR;
+}
+
+digraph g25 {
+        S_AA9 -> T_X6 -> S_X;
+        X_SPACE -> T_X6 [label="+"];
+        AE_TOWN_0 -> T_X6 [label="+"];
+        AE_AREA_CR -> T_X6 [label="+"];
+        T_X6 -> A_SECTOR;
+}
+
+digraph g26 {
+        S_AA9 -> T_X7 -> S_X;
+        X_SPACE -> T_X7 [label="+"];
+        AE_TOWN_0 -> T_X7 [label="+"];
+        AE_AREA_FY -> T_X7 [label="+"];
+        T_X7 -> A_SECTOR;
+}
+
+digraph g27 {
+        S_AA9 -> T_X10 -> S_X;
+        X_SPACE -> T_X10 [label="+"];
+        AE_TOWN_0 -> T_X10 [label="+"];
+        AE_AREA_HA -> T_X10 [label="+"];
+        T_X10 -> A_SECTOR;
+}
+
+digraph g28 {
+        S_AA9 -> T_X11 -> S_X;
+        X_SPACE -> T_X11 [label="+"];
+        AE_TOWN_0 -> T_X11 [label="+"];
+        AE_AREA_PR -> T_X11 [label="+"];
+        T_X11 -> A_SECTOR;
+}
+
+digraph g29 {
+        S_AA9 -> T_X12 -> S_X;
+        X_SPACE -> T_X12 [label="+"];
+        AE_TOWN_0 -> T_X12 [label="+"];
+        AE_AREA_SL -> T_X12 [label="+"];
+        T_X12 -> A_SECTOR;
+}
+
+digraph g30 {
+        S_AA9 -> T_X13 -> S_X;
+        X_SPACE -> T_X13 [label="+"];
+        AE_TOWN_0 -> T_X13 [label="+"];
+        AE_AREA_SS -> T_X13 [label="+"];
+        T_X13 -> A_SECTOR;
+}
+
+digraph g31 {
+        S_A9A -> T_X15 -> S_X;
+        X_SPACE -> T_X15 [label="+"];
+        T_X15 -> A_SECTOR;
+}
+
+digraph g32 {
+        S_AA9 -> T_AA9A1 -> S_AA9A;
+        C_ALPHA -> T_AA9A1 [label="+"];
+        AE_OUTWARD_EC1 -> T_AA9A1 [label="+"];
+        T_AA9A1 -> A_OUTWARD;
+        T_AA9A1 -> A_SECTOR;
+
+        S_AA9 -> T_AA9A2 -> S_AA9A;
+        C_ALPHA -> T_AA9A2 [label="+"];
+        AE_OUTWARD_EC2 -> T_AA9A2 [label="+"];
+        T_AA9A2 -> A_OUTWARD;
+        T_AA9A2 -> A_SECTOR;
+
+        S_AA9 -> T_AA9A3 -> S_AA9A;
+        C_ALPHA -> T_AA9A3 [label="+"];
+        AE_OUTWARD_EC3 -> T_AA9A3 [label="+"];
+        T_AA9A3 -> A_OUTWARD;
+        T_AA9A3 -> A_SECTOR;
+}
+
+        
+        
+        
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
