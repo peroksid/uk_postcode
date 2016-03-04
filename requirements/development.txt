@@ -1,4 +1,5 @@
-python-graph
-nosetests
+pydotplus
+nose
+nose-parameterized
 pep8
 pyflakes
