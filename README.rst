@@ -57,7 +57,6 @@ Receptor states (X, C, R, AE, ARI)
     Link from a receptor to a transition is always labelled with "+" or "-", thus allowing or forbidding transition to become active. All positives and no negatives connections must be on for transition to become active.
 
 Accumulator states (A)
-
     Add current input char to corresponding part of context dictionary.
 
 File postal.dot contains graphs grouping states and transitions closely related to each other.
