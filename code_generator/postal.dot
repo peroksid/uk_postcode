@@ -83,6 +83,8 @@ digraph g10 {
         S_X9A -> T_X9AA -> S_X9AA;
         C_ALPHA -> T_X9AA [label="+"];
         R_CIKMOV -> T_X9AA [label="-"];
+        T_X9AA -> A_UNIT;
+        T_X9AA -> A_INWARD;
 }
 
 digraph g11 {
@@ -94,8 +96,24 @@ digraph g11 {
         S_X -> T_X92 -> S_X9;
         X_0 -> T_X92 [label="+"];
         AE_TOWN_9 -> T_X92 [label="+"];
+        AE_AREA_CR -> T_X92 [label="+"];
         T_X92 -> A_SECTOR;
         T_X92 -> A_INWARD;
+
+        S_X -> T_X93 -> S_X9;
+        X_0 -> T_X93 [label="+"];
+        AE_TOWN_9 -> T_X93 [label="+"];
+        AE_AREA_NP -> T_X92 [label="+"];
+        T_X93 -> A_SECTOR;
+        T_X93 -> A_INWARD;
+
+        // 0 in UNIT for 9 in TOWN only for Croydon and Newport
+        S_X -> T_X94 -> S_X9;
+        X_0 -> T_X94 [label="+"];
+        AE_TOWN_9 -> T_X94 [label="-"];
+        T_X94 -> A_SECTOR;
+        T_X94 -> A_INWARD;
+
 }
 
 digraph g12 {

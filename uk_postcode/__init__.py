@@ -23,6 +23,8 @@ TRANSITIONS = {
     ],
     "S_X": [
         "T_X92",
+        "T_X93",
+        "T_X94",
         "T_X91"
     ],
     "S_A9A": [
@@ -94,8 +96,10 @@ STATES = {
     "T_A9A2": "S_A9A",
     "T_A9A3": "S_A9A",
     "T_X9A": "S_X9A",
+    "T_X93": "S_X9",
     "T_X92": "S_X9",
     "T_X91": "S_X9",
+    "T_X94": "S_X9",
     "T_X13": "S_X",
     "T_X12": "S_X",
     "T_X11": "S_X",
@@ -198,13 +202,21 @@ ACCUMULATORS = {
         "A_UNIT",
         "A_INWARD"
     ],
-    "T_X92": [
+    "T_X93": [
         "A_SECTOR",
         "A_INWARD"
+    ],
+    "T_X92": [
+        "A_INWARD",
+        "A_SECTOR"
     ],
     "T_X91": [
         "A_INWARD",
         "A_SECTOR"
+    ],
+    "T_X94": [
+        "A_SECTOR",
+        "A_INWARD"
     ],
     "T_X13": [
         "A_SECTOR"
@@ -229,6 +241,10 @@ ACCUMULATORS = {
     ],
     "T_X14": [
         "A_SECTOR"
+    ],
+    "T_X9AA": [
+        "A_UNIT",
+        "A_INWARD"
     ],
     "T_A": [
         "A_OUTWARD",
@@ -340,12 +356,21 @@ POSITIVES = {
     "T_X9A": [
         "C_ALPHA"
     ],
-    "T_X92": [
+    "T_X93": [
         "X_0",
+        "AE_TOWN_9"
+    ],
+    "T_X92": [
+        "AE_AREA_NP",
+        "X_0",
+        "AE_AREA_CR",
         "AE_TOWN_9"
     ],
     "T_X91": [
         "R_123456789"
+    ],
+    "T_X94": [
+        "X_0"
     ],
     "T_X13": [
         "X_SPACE",
@@ -413,22 +438,25 @@ NEGATIVES = {
         "AE_AREA_LD",
         "AE_AREA_WC"
     ],
-    "T_X2": [
-        "AE_AREA_AB",
-        "AE_AREA_LL",
-        "AE_AREA_SO"
-    ],
     "T_A": [
         "R_QVX"
     ],
-    "T_X9A": [
-        "R_CIKMOV"
+    "T_X94": [
+        "AE_TOWN_9"
     ],
     "T_AA": [
         "R_IJZ"
     ],
+    "T_X9A": [
+        "R_CIKMOV"
+    ],
     "T_X9AA": [
         "R_CIKMOV"
+    ],
+    "T_X2": [
+        "AE_AREA_AB",
+        "AE_AREA_LL",
+        "AE_AREA_SO"
     ]
 }
 
@@ -441,18 +469,31 @@ def decode(code):
     state = START_STATE
     context = {}
     for index, char in enumerate(code):
-        logger.debug(char)
-        logger.debug(state)
-        logger.debug(context)
-        for t in TRANSITIONS[state]:
-            if all(x(context, char) for x in POSITIVES.get(t, [])):
-                if not any(x(context, char) for x in NEGATIVES.get(t, [])):
+        logger.debug('char: "%s"', char)
+        logger.debug('states: %s', state)
+        logger.debug('context %s', context)
+        transitions = TRANSITIONS[state]
+        logger.debug('transitions %s', transitions)
+        for t in transitions:
+            logger.debug('transition %s', t)
+            positives = POSITIVES.get(t, [])
+            logger.debug('positives %s', positives)
+            positive_results = [x(context, char) for x in positives]
+            if all(positive_results):
+                negatives = NEGATIVES.get(t, [])
+                logger.debug('negatives %s', negatives)
+                negative_results = [x(context, char) for x in negatives]
+                if not any(negative_results):
                     state = STATES.get(t)
                     logger.debug('new state %s', state)
                     logger.debug('accumulators %s', ACCUMULATORS.get(t, []))
                     for a in ACCUMULATORS.get(t, []):
-                        context = a(context, char)
+                        a(context, char)
                     break
+                else:
+                    logger.debug('negatives rejected %s', negative_results)
+            else:
+                logger.debug('positives rejected %s', positive_results)
         else:
             raise RuntimeError("all transitions are inactive")
     return context
