@@ -1,12 +1,13 @@
-API
-===
+Usage
+=====
+
+Python API::
 
     from uk_postcode import decode
     decode("DN55 1PT")
 
 
-CLI
-===
+Example CLI::
 
     uk_postcode "DN55 1PT"
 
@@ -26,14 +27,15 @@ Resulting code does not even import regular expressions, requires nothing but st
 Development Cycle
 =================
 
-add test cases to tests/
-LOGGING_LEVEL=DEBUG run ./setup.py test
-edit postal.dot, decode_template.py or handlers.py (all in ./code_generator/
-run ./setup.py gen
-start over with ./setup.py test
-when happy:
-change version in setup.py
-ready to install/distribute now
+* add test cases to tests/
+* LOGGING_LEVEL=DEBUG run ./setup.py test
+* (edit postal.dot, decode_template.py or handlers.py (all in ./code_generator/
+* run ./setup.py gen
+* start over with ./setup.py test
+
+When happy
+* change version in setup.py
+* ready to install/distribute now
 
 
 Graph
@@ -43,9 +45,19 @@ For those who knows what Petri net is: the graph here is not a real Petri net. I
 
 But it is similar in separation of nodes on states/transitions and having verices connected only nodes of different kinds. Also, we have context (dictionary object).
 
-The net state is change syncronously with input chars. States divide in 3 kinds:
- - Structure states indicate the structure reached (S_). Become active when preceding transition becomes active.
- - Receptor states, represent predicates (logical conditions) based on type receptor class and it's arguments. (X_, C_, R_, AE_, ARI_ - see handlers.py). Link from a receptor to a transition is always labelled with "+" or "-", thus allowing or forbidding transition to become active. All positives and no negatives connections must be on for transition to become active.
- - Accumulator states (A_). Add current input char to corresponding part of context dictionary.
+The net state is change syncronously with input chars. States divide in 3 kinds.
+
+Structure states (S_)
+    Indicate the structure reached.
+    Become active when preceding transition becomes active.
+
+Receptor states (X_, C_, R_, AE_, ARI_)
+    Represent predicates (logical conditions) based on type receptor class and it's arguments.
+
+    Link from a receptor to a transition is always labelled with "+" or "-", thus allowing or forbidding transition to become active. All positives and no negatives connections must be on for transition to become active.
+
+Accumulator states (A_)
+
+    Add current input char to corresponding part of context dictionary.
 
 File postal.dot contains graphs grouping states and transitions closely related to each other.
