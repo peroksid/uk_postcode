@@ -47,16 +47,16 @@ But it is similar in separation of nodes on states/transitions and having verice
 
 The net state is change syncronously with input chars. States divide in 3 kinds.
 
-Structure states (S_)
+Structure states (S)
     Indicate the structure reached.
     Become active when preceding transition becomes active.
 
-Receptor states (X_, C_, R_, AE_, ARI_)
-    Represent predicates (logical conditions) based on type receptor class and it's arguments.
+Receptor states (X, C, R, AE, ARI)
+    Represent predicates (logical conditions) based on type receptor class and it's arguments. For example, X_SPACE is active if current char is space; ARI_AREA_0_AZ is active if first character of accumulator named "AREA" has A or Z as a first element.
 
     Link from a receptor to a transition is always labelled with "+" or "-", thus allowing or forbidding transition to become active. All positives and no negatives connections must be on for transition to become active.
 
-Accumulator states (A_)
+Accumulator states (A)
 
     Add current input char to corresponding part of context dictionary.
 
