@@ -1,37 +1,39 @@
 API
 ===
 
-   from uk_postcode import decode
-   decode("DN55 1PT")
+    from uk_postcode import decode
+    decode("DN55 1PT")
 
 
 CLI
 ===
 
-   uk_postcode "DN55 1PT"
+    uk_postcode "DN55 1PT"
 
 
 Rationale
 =========
 
-I considered regexp and logic branching approaches too complex in implementation and support.
+UK postal code system is rather complex: https://en.wikipedia.org/wiki/Postcodes_in_the_United_Kingdom#Postcode_unit
 
-Proposed solution idea derived from Petri nets. This allows to declare logic in graph (in fact, in a series of graphs) and have relatively small amount of Python code. Finding errors is fast if you understand what names of nodes mean.
+I think that regexp and/or logic branching would be too complex to implement and support.
 
-I am generating uk_postcode package to minimize dependencies, used resource and time spent on useful work. It does not use even regular expressions and should work relatively fast.
+Proposed solution declares logic in graph (in fact, in a series of graphs) and has relatively small amount of Python code. Finding errors is fast if you understand what names of nodes mean. Code to distribute is generated.
+
+Resulting code does not even import regular expressions, requires nothing but standard library and is quite fast. It is easy to add rules, fix errors and reason about.
 
 
 Development Cycle
 =================
 
 add test cases to tests/
-run ./setup.py test
+LOGGING_LEVEL=DEBUG run ./setup.py test
 edit postal.dot, decode_template.py or handlers.py (all in ./code_generator/
 run ./setup.py gen
 start over with ./setup.py test
 when happy:
 change version in setup.py
-run ./setup.py sdist
+ready to install/distribute now
 
 
 Graph
@@ -43,5 +45,7 @@ But it is similar in separation of nodes on states/transitions and having verice
 
 The net state is change syncronously with input chars. States divide in 3 kinds:
  - Structure states indicate the structure reached (S_). Become active when preceding transition becomes active.
- - Receptor states, represent predicates (logical conditions) based on type receptor class and it's arguments. (X_, C_, R_, AE_, ARI). Link from a receptor to a transition is always labelled with "+" or "-", thus allowing or forbidding transition to become active. All positives and no negatives connections must be on for transition to become active.
+ - Receptor states, represent predicates (logical conditions) based on type receptor class and it's arguments. (X_, C_, R_, AE_, ARI_ - see handlers.py). Link from a receptor to a transition is always labelled with "+" or "-", thus allowing or forbidding transition to become active. All positives and no negatives connections must be on for transition to become active.
  - Accumulator states (A_). Add current input char to corresponding part of context dictionary.
+
+File postal.dot contains graphs grouping states and transitions closely related to each other.
